@@ -1,0 +1,26 @@
+.App {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.chart-text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+@keyframes donut-chart-fill {
+  to { stroke-dasharray: 0 100; }
+}
+
+.addOverflow {
+  overflow: visible;
+}
+
+.donut-segment {
+  animation: donut-chart-fill 1.5s reverse ease-in;
+}
