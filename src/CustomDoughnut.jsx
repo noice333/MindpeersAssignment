@@ -8,23 +8,23 @@ const CustomDoughnut = ({ data }) => {
   const convertToHours = data.map((x) =>
     x.end.getHours() !== 0
       ? {
-          diff:
-            x.end.getHours() +
-            x.end.getMinutes() / 60 -
-            (x.start.getHours() + x.start.getMinutes() / 60),
-          start: x.start.getHours(),
-          end: x.end.getHours(),
-        }
+        diff:
+          x.end.getHours() +
+          x.end.getMinutes() / 60 -
+          (x.start.getHours() + x.start.getMinutes() / 60),
+        start: x.start.getHours(),
+        end: x.end.getHours(),
+      }
       : {
-          diff:
-            24 +
-            x.end.getMinutes() / 60 -
-            (x.start.getHours() + x.start.getMinutes() / 60),
-          start: x.start.getHours(),
-          end: 0,
-        },
+        diff:
+          24 +
+          x.end.getMinutes() / 60 -
+          (x.start.getHours() + x.start.getMinutes() / 60),
+        start: x.start.getHours(),
+        end: 0,
+      },
   );
-  console.log("Data: ", convertToHours);
+  // console.log("Data: ", convertToHours);
   const segmentsDataArray = convertToHours.map((x) => ({
     strokeDasharray: `${4.17 * x.diff} ${100 - 4.17 * x.diff}`,
     strokeDashoffset: `${-(4.17 * x.start) - 75}`,
@@ -116,70 +116,68 @@ const CustomDoughnut = ({ data }) => {
   }
 
   return (
-    <div>
-      <div className="App">
-        <svg width={center * 2} height={center * 2} className="addOverflow">
-          <svg width="100%" height="100%" viewBox="0 0 42 42" className="donut">
+    <div className="donut-chart">
+      <svg width={center * 2} height={center * 2} className="addOverflow">
+        <svg width="100%" height="100%" viewBox="0 0 42 42" className="donut">
+          <circle
+            className="donut-hole"
+            cx="21"
+            cy="21"
+            r="15.91549430918954"
+            fill="transparent"
+          ></circle>
+          <circle
+            className="donut-ring"
+            cx="21"
+            cy="21"
+            r="15.91549430918954"
+            fill="transparent"
+            stroke={theme.palette.primary}
+            strokeWidth="3"
+          ></circle>
+          {segmentsDataArray.map((x, index) => (
             <circle
-              className="donut-hole"
+              className="donut-segment"
               cx="21"
               cy="21"
               r="15.91549430918954"
               fill="transparent"
-            ></circle>
-            <circle
-              className="donut-ring"
-              cx="21"
-              cy="21"
-              r="15.91549430918954"
-              fill="transparent"
-              stroke={theme.palette.primary}
+              stroke="#737DFE"
               strokeWidth="3"
+              strokeDasharray={x.strokeDasharray}
+              strokeDashoffset={x.strokeDashoffset}
+              key={`segment-${index}`}
             ></circle>
-            {segmentsDataArray.map((x, index) => (
-              <circle
-                className="donut-segment"
-                cx="21"
-                cy="21"
-                r="15.91549430918954"
-                fill="transparent"
-                stroke="#737DFE"
-                strokeWidth="3"
-                strokeDasharray={x.strokeDasharray}
-                strokeDashoffset={x.strokeDashoffset}
-                key={`segment-${index}`}
-              ></circle>
-            ))}
-          </svg>
-          <svg x="0" y="0" width="100%" height="100%" className="chart-text">
-            {longLines}
-            {shortLines}
-            {labels}
-          </svg>
-          {outerLabels}
-          <rect
-            x="50"
-            y="50"
-            width="200"
-            height="200"
-            style={{ fill: "transparent", stroke: "black", strokeWidth: 0 }}
-          />
-          <line
-            x1="50"
-            y1="50"
-            x2="250"
-            y2="250"
-            style={{ stroke: "darkgrey", strokeDasharray: "4 4" }}
-          />
-          <line
-            x1="250"
-            y1="50"
-            x2="50"
-            y2="250"
-            style={{ stroke: "darkgrey", strokeDasharray: "4 4" }}
-          />
+          ))}
         </svg>
-      </div>
+        <svg x="0" y="0" width="100%" height="100%" className="chart-text">
+          {longLines}
+          {shortLines}
+          {labels}
+        </svg>
+        {outerLabels}
+        <rect
+          x="50"
+          y="50"
+          width="200"
+          height="200"
+          style={{ fill: "transparent", stroke: "black", strokeWidth: 0 }}
+        />
+        <line
+          x1="50"
+          y1="50"
+          x2="250"
+          y2="250"
+          style={{ stroke: "darkgrey", strokeDasharray: "4 4" }}
+        />
+        <line
+          x1="250"
+          y1="50"
+          x2="50"
+          y2="250"
+          style={{ stroke: "darkgrey", strokeDasharray: "4 4" }}
+        />
+      </svg>
     </div>
   );
 };

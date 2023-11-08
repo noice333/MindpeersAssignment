@@ -5,6 +5,7 @@ export const themes = {
         theme: 'light',
         background: 'white',
         text: 'black',
+        cardBackground: '#E7E9EB',
         palette: {
             primary: '#d2d3d4',
             secondary: '#737DFE'
@@ -14,6 +15,7 @@ export const themes = {
         theme: 'dark',
         background: '#212121',
         text: 'white',
+        cardBackground: '#393939',
         palette: {
             primary: '#454545',
             secondary: '#737DFE'
