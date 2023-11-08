@@ -15,7 +15,7 @@ const FlowZone = ({ children }) => {
         {
             icon: Gamepad,
             category: 'Games',
-            foryou: 'Explore',
+            foryou: <a href='#' style={{color: '#00B3CC'}}><b>Explore</b></a>,
             globally: 'Memory Game'
         },
         {
@@ -40,7 +40,8 @@ const FlowZone = ({ children }) => {
     return (
         <div className="flow-zone" style={{ color: theme.text }}>
             <div className="row m-0 p-0">
-                <div className="col-sm-12 col-md-6 mx-auto">
+                <div className="col-sm-12 col-md-6 mx-auto border border-4 border-secondary rounded-4">
+                    <div className="h5 py-4 text-center">Flow Zone</div>
                     <div className="d-flex justify-content-between align-items-center px-4 py-2" style={{ borderRadius: '10px', background: theme.cardBackground }}>
                         <div className="h5 py-2 mb-0">About Flow Zone</div> <div><i className="fas fa-angle-down"></i></div>
                     </div>
