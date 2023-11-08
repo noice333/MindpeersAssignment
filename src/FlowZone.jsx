@@ -42,7 +42,7 @@ const FlowZone = ({ children }) => {
             <div className="row m-0 p-0">
                 <div className="col-sm-12 col-md-6 mx-auto">
                     <div className="d-flex justify-content-between align-items-center px-4 py-2" style={{ borderRadius: '10px', background: theme.cardBackground }}>
-                        <div className="h5 py-2 mb-0">About Flow Zone</div> <div><i class="fas fa-angle-down"></i></div>
+                        <div className="h5 py-2 mb-0">About Flow Zone</div> <div><i className="fas fa-angle-down"></i></div>
                     </div>
                     <div className="d-flex justify-content-between align-items-center my-3">
                         <div className="h5 mb-0">Flow Peaks <span><img src={Info} alt='info-icon' /></span></div>
@@ -73,7 +73,7 @@ const FlowZone = ({ children }) => {
                                 <tbody>
                                     {
                                         tableData.map(x => (
-                                            <tr>
+                                            <tr key={x.category}>
                                                 <td className='text-left'><img src={x.icon} alt="" /> {x.category}</td>
                                                 <td className='text-center'>{x.foryou}</td>
                                                 <td className='text-center'>{x.globally}</td>
