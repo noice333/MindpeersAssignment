@@ -26,10 +26,6 @@
 }
 
 @media (max-width: 400px) {
-  .full {
-    width: 100% !important;
-    margin: 4px 0;
-  }
   .hide-border {
     border: none !important;
   }
