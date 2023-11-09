@@ -24,3 +24,13 @@
 .donut-segment {
   animation: donut-chart-fill 1.5s reverse ease-in;
 }
+
+@media (max-width: 400px) {
+  .full {
+    width: 100% !important;
+    margin: 4px 0;
+  }
+  .hide-border {
+    border: none !important;
+  }
+}
